@@ -1,25 +1,42 @@
-# README
+# <勤怠管理アプリ>
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
+<労働者：youser,管理者:admin,残業時間:overtime
+ 労働者はログイン〜ログアウトまでが勤務時間となる、
+ TOPページには本日の勤務期間（管理者サイドで決めたもの）、週間、月間残業時間の表示
+ ログアウトページに残業内容（コメント）とログアウトボタンがある。ログアウトボタンにはログアウト機能と残業の申請機能をつけることでサビ残を無くします
+ 残業申請一覧ページに過去の残業時間を表示させる
 
-Things you may want to cover:
+ 管理者は残業時間の受諾、一部編集をできるようにする
+ TOPページには労働者の一覧（ログイン、ログアウトのステータス表示）、また残業時間によるソート機能をつける
+ 労働者の詳細ページでは各種データの表示、勤務時間の設定をできるようにする
+ 残業申請ページには申請一覧を出し申請のステータスを変更することで確定させる⬅︎（ECマートで作った注文ステータスのようなイメージ）>
 
-* Ruby version
+### サイトテーマ
+<私の前職でサビ残めっちゃしていたのでサビ残が絶対できない勤怠管理アプリを作りました>
 
-* System dependencies
+### テーマを選んだ理由
+<私の前職でサビ残めっちゃあったため作りました>
 
-* Configuration
+### ターゲットユーザ
+<働きから改革を実践していく企業様へ>
 
-* Database creation
+### 主な利用シーン
+<勤務管理に>
 
-* Database initialization
+## 設計書
+<...>
 
-* How to run the test suite
+## チャレンジ要素一覧
+<https://docs.google.com/spreadsheets/d/1IYHykGMysk7T3jSqLJfs_BBpU1sya4wHJi-lOMr7HFE/edit#gid=0>
 
-* Services (job queues, cache servers, search engines, etc.)
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
 
-* Deployment instructions
-
-* ...
-# PF_mk2
+## 使用素材
+- 随時追記
+-
