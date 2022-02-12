@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  working_time_id: 1
+  overtime_start: 2022-02-12 08:00:34
+  overtime_finish: 2022-02-12 08:00:34
+  job_description: MyText
+
+two:
+  working_time_id: 1
+  overtime_start: 2022-02-12 08:00:34
+  overtime_finish: 2022-02-12 08:00:34
+  job_description: MyText

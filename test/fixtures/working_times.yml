@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  worker_id: 1
+  start_time: 2022-02-12 07:22:55
+  finish_time: 2022-02-12 07:22:55
+  over_time: 2022-02-12 07:22:55
+  open_time: 2022-02-12 07:22:55
+  end_time: 2022-02-12 07:22:55
+
+two:
+  worker_id: 1
+  start_time: 2022-02-12 07:22:55
+  finish_time: 2022-02-12 07:22:55
+  over_time: 2022-02-12 07:22:55
+  open_time: 2022-02-12 07:22:55
+  end_time: 2022-02-12 07:22:55
