@@ -1,0 +1,17 @@
+<p>労働者一覧</p>
+
+<table>
+  <tr>
+    <td>氏名</td>
+    <td>ログイン時刻</td>
+    <td>ログアウト時刻</td>
+  </tr>
+
+  <% @workers.each do |worker| %>
+  <tr>
+    <td><%= worker.full_name %></td>
+    <td><%= worker.current_sign_in_at %></td>
+    <td><%= worker.last_sign_in_at %></td>
+  </tr>
+  <% end %>
+</table>

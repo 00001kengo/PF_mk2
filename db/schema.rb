@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_12_080137) do
+ActiveRecord::Schema.define(version: 2022_02_13_111703) do
 
   create_table "bosses", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -24,19 +24,12 @@ ActiveRecord::Schema.define(version: 2022_02_12_080137) do
     t.index ["reset_password_token"], name: "index_bosses_on_reset_password_token", unique: true
   end
 
-  create_table "logs", force: :cascade do |t|
-    t.integer "worker_id"
-    t.datetime "log_in"
-    t.datetime "log_out"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "requests", force: :cascade do |t|
     t.integer "working_time_id"
-    t.datetime "overtime_start"
-    t.datetime "overtime_finish"
+    t.datetime "start_at"
+    t.datetime "finish_at"
     t.text "job_description"
+    t.integer "status", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -49,19 +42,22 @@ ActiveRecord::Schema.define(version: 2022_02_12_080137) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "last_name"
-    t.string "first_name"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string "current_sign_in_ip"
+    t.string "last_sign_in_ip"
     t.index ["email"], name: "index_workers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_workers_on_reset_password_token", unique: true
   end
 
   create_table "working_times", force: :cascade do |t|
     t.integer "worker_id"
-    t.datetime "start_time"
-    t.datetime "finish_time"
-    t.datetime "over_time"
-    t.datetime "open_time"
-    t.datetime "end_time"
+    t.datetime "start_at"
+    t.datetime "finish_at"
+    t.datetime "over_at"
+    t.datetime "open_at"
+    t.datetime "end_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

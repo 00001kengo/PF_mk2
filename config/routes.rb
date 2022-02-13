@@ -1,5 +1,29 @@
 Rails.application.routes.draw do
-  devise_for :bosses
-  devise_for :workers
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  root 'homes#top'
+  # 管理者(Boss)用
+  # URL /boss/sign_in ...
+  devise_for :boss, skip: [:registrations, :passwords], controllers: {
+    sessions: 'boss/sessions'
+  }
+  namespace :bosses do
+    resources :workers, only: [:index, :show]
+    resources :requests, only: [:index, :show, :update]
+  end
+
+  # 労働者用
+  # URL /workers/sign_in ...
+  devise_for :worker, skip: [:passwords,], controllers: {
+    registrations: 'worker/registrations',
+    sessions: 'worker/sessions'
+  }
+  namespace :workers do
+    resources :workers, only: [:show]
+    resources :requests, only: [:index, :show, :new, :create]
+
+  end
+
+
+
+
 end

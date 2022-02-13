@@ -1,0 +1,2 @@
+module Bosses::RequestsHelper
+end
