@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_13_111703) do
+ActiveRecord::Schema.define(version: 2022_02_14_022038) do
 
   create_table "bosses", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -47,13 +47,15 @@ ActiveRecord::Schema.define(version: 2022_02_13_111703) do
     t.datetime "last_sign_in_at"
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
+    t.string "first_name"
+    t.string "last_name"
     t.index ["email"], name: "index_workers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_workers_on_reset_password_token", unique: true
   end
 
   create_table "working_times", force: :cascade do |t|
     t.integer "worker_id"
-    t.datetime "start_at"
+    t.datetime "start_at", default: "2015-01-01 00:00:00"
     t.datetime "finish_at"
     t.datetime "over_at"
     t.datetime "open_at"

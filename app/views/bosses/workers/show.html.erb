@@ -1,0 +1,9 @@
+<p>詳細ページ</p>
+
+<p>name</p>
+<p><%= @worker.name %></p>
+
+<p>勤務時間</p>
+<p><%= @working_time.start_at %>~<%= @worker_time.finish_at %></p>
+
+<%= link_to "編集", edit_bosses_worker_path(worker.id) %>

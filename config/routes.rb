@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     sessions: 'boss/sessions'
   }
   namespace :bosses do
-    resources :workers, only: [:index, :show]
+    resources :workers, only: [:index, :show, :edit]
     resources :requests, only: [:index, :show, :update]
   end
 

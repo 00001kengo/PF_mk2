@@ -5,6 +5,7 @@
     <td>氏名</td>
     <td>ログイン時刻</td>
     <td>ログアウト時刻</td>
+    <td></td>
   </tr>
 
   <% @workers.each do |worker| %>
@@ -12,6 +13,7 @@
     <td><%= worker.full_name %></td>
     <td><%= worker.current_sign_in_at %></td>
     <td><%= worker.last_sign_in_at %></td>
+    <td><%= link_to "詳細", bosses_worker_path(worker.id) %></td>
   </tr>
   <% end %>
 </table>
