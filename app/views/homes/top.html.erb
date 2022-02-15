@@ -1,9 +1,29 @@
 <h1>勤怠管理システム：：Ssystem</h1>
-<p>ノーサビ残</p>
 
-<%= link_to "管理者ログイン", new_boss_session_path %>
-<%= link_to "労働者ログイン", new_worker_session_path %>
+<div class =
+<p>絶対サビ残させません！！</p>
 
+<table>
+  <tr>
+    <td></td>
+    <td><%= link_to "労働者ログイン", new_worker_session_path %></td>
+  </tr>
+  <tr>
+    <td><p>初めての方はこちら</p></td>
+    <td><%= link_to "労働者登録", new_worker_registration_path %></td>
+  </tr>
+</table>
 
-<p>初めての方はこちら</p>
-<%= link_to "労働者登録", new_worker_registration_path %>
+<table>
+  <tr>
+    <td><p>上司の方はこちら</p></td>
+    <td><%= link_to "管理者ログイン", new_boss_session_path %></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td><p></p></td>
+    <td><%= link_to "logout", destroy_worker_session_path, method: :delete %></td>
+  </tr>
+</table>

@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 2022_02_14_022038) do
     t.integer "sign_in_count", default: 0, null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
+    t.datetime "last_sign_out_at"
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
     t.string "first_name"
@@ -56,7 +57,7 @@ ActiveRecord::Schema.define(version: 2022_02_14_022038) do
   create_table "working_times", force: :cascade do |t|
     t.integer "worker_id"
     t.datetime "start_at", default: "2015-01-01 00:00:00"
-    t.datetime "finish_at"
+    t.datetime "finish_at", default: "2015-01-01 00:00:00"
     t.datetime "over_at"
     t.datetime "open_at"
     t.datetime "end_at"

@@ -6,16 +6,24 @@ class Bosses::WorkersController < ApplicationController
 
   def show
     @worker = Worker.find(params[:id])
-    @working_time = Working_times.find(params[:worker_params])
+    date = DateTime.now
+    today = date.strftime("%Y-%m-%d").split('-')
+    day_start = DateTime.new(today[0].to_i, today[1].to_i, today[2].to_i, 0,0,0)
+    day_end = DateTime.new(today[0].to_i, today[1].to_i, today[2].to_i, 23,59,59)
+    #当日のデータから勤務データを引張る
+    @working_time = @worker.working_times.find_by(start_at:day_start..day_end)
+
   end
 
   def edit
     @worker = Worker.find(params[:id])
-    @working_time = Working_times.(worker_params)
+    @working_time = WorkingTime.(params[:id])
   end
 
   def update
-    @working_time = Working_times(worker_params).new
+    @working_time = Working_times(worker_params)
+    @working_time.update(working_time_params)
+    redirect_to bosses_workers_path
   end
 
   private
