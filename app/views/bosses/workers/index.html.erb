@@ -11,8 +11,8 @@
   <% @workers.each do |worker| %>
   <tr>
     <td><%= worker.full_name %></td>
-    <td><%= worker.current_sign_in_at %></td>
-    <td><%= worker.last_sign_in_at %></td>
+    <td><%= worker.current_sign_in_at.in_time_zone('Tokyo').strftime("%Y-%m-%d %H:%M:%S") %></td>
+    <td><%= worker.last_sign_in_at.in_time_zone('Tokyo').strftime("%Y-%m-%d %H:%M:%S") %></td>
     <td><%= link_to "詳細", bosses_worker_path(worker.id) %></td>
   </tr>
   <% end %>

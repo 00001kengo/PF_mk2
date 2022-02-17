@@ -4,8 +4,15 @@
 <p><%= @worker.full_name %></p>
 
 <p>勤務時間</p>
-<% if WorkingTime.exists?(worker_id: @worker.id) %>
-<p><%= @working_time.start_at %>~<%= @worker_time.finish_at %></p>
-
+<% @worker.working_times.each do |working_time| %>
+    <p>
+        <%= working_time.start_at.strftime("%Y-%m-%d %H:%M:%S") %>
+        ~
+        <%= working_time.finish_at.strftime("%Y-%m-%d %H:%M:%S") %>
+    </p>
+    <P><%= link_to "編集", edit_workers_worker_working_time_path(@worker.id,working_time.id) %></P>
 <% end %>
-<%= link_to "編集", edit_bosses_worker_path(@worker.id) %>
+
+
+<%# end %>
+<%= link_to "新規追加", new_workers_worker_working_time_path(@worker) %>
