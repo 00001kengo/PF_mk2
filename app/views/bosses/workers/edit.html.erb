@@ -1,0 +1,12 @@
+<p>勤務時間登録</p>
+
+<%= form_with model:worker, local:true do |f| %>
+
+<h4>開始時刻</h4>
+<%= f.datetime_field :start_at.strftime("%Y-%m-%d %H:%M:%S") %>
+
+<h4>終了時刻</h4>
+<%= f.datetime_field :finish_at.strftime("%Y-%m-%d %H:%M:%S") %>
+
+<%= f.submit '投稿' %>
+<% end %>

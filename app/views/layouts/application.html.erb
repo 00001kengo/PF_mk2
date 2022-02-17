@@ -9,7 +9,21 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+
+
   <body>
+    <% if boss_signed_in? %>
+      <header class="boss_header">
+        <div class="header-content">
+          <%= link_to "Ssystem", root_path, class: "logo" %>
+          <ul class="flex">
+            <li></li>
+            <li></li>
+            <li><%#= link_to "log out", %></li>
+          </ul>
+        </div>
+      </header>
+      <% end %>
     <%= yield %>
   </body>
 </html>

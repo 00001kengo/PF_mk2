@@ -1,0 +1,2 @@
+module Workers::WorkingTimesHelper
+end

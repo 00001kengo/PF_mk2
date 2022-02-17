@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 class Worker::RegistrationsController < Devise::RegistrationsController
+  #これを呼び出したのがdeviseコントローラならば実行させる
+  before_action :configure_permitted_parameters, if: :devise_controller?
+  
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
@@ -59,7 +62,12 @@ class Worker::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
-  def after_sign_in_path_for(resource)
-    workers_worker_path(resource)
+  # def after_sign_in_path_for(resource)
+  #   workers_worker_path(resource)
+  # end
+
+  private
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [ :email, :encrypted_password, :first_name, :last_name])
   end
 end
