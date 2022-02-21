@@ -1,36 +1,25 @@
 class Workers::WorkingTimesController < ApplicationController
 
-  def new #上司のみ勤務時間の作成
-    @working_time = WorkingTime.new
+  def index
+    @working_times = current_worker.working_times
   end
 
-  def create
-    @working_time = WorkingTime.new(working_time_params)
-    @working_time.worker_id = params[:worker_id]
-    @working_time.save!
-    redirect_to bosses_workers_path
+  def attendance
+    #open_atにげんざい時刻を入れる
+    @working_time = WorkingTime.find(params[:id])
+    @working_time.open_at = DateTime.now
+    @working_time.update
+    redirect_to request.referer
   end
 
-  def index #上司、労働者ともに見る事ができる
-    @worker = Worker.find(params[:id])
-    @working_time = WorkingTime.find_by(id: params[:id])
+  def leaving
+    #end?atに現在時刻を入れる
+    @working_time = WorkingTime.find(params[:id])
+    @working_time.end_at = DateTime.now
+    @working_time.update
+    redirect_to request.referer
   end
 
-  def edit #上司のみ編集できる
-    #日付毎に引っ張れてる？
-    @working_time = WorkingTime.find_by(id: params[:id])
-
-  end
-
-  def update
-    working_time = WorkingTime.find_by(id: params[:id])
-    working_time.update(working_time_params)
-    redirect_to bosses_worker_path(working_time.worker_id)
-  end
-
-  def destrroy
-
-  end
 
   private
 

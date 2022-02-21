@@ -10,6 +10,13 @@
         ~
         <%= working_time.finish_at.strftime("%Y-%m-%d %H:%M:%S") %>
     </p>
+    <% if working_time.open_at.present? %>
+    <P>
+        <%= working_time.open_at.strftime("%Y-%m-%d %H:%M:%S") %>
+        ~
+        <%= working_time.end_at.strftime("%Y-%m-%d %H:%M:%S") %>
+    </P>
+    <% end %>
     <P><%= link_to "編集", edit_workers_worker_working_time_path(@worker.id,working_time.id) %></P>
 <% end %>
 

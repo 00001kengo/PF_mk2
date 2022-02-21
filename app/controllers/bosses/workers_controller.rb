@@ -15,16 +15,7 @@ class Bosses::WorkersController < ApplicationController
 
   end
 
-  def edit
-    @worker = Worker.find(params[:id])
-    @working_time = WorkingTime.(params[:id])
-  end
-
-  def update
-    @working_time = Working_times(worker_params)
-    @working_time.update(working_time_params)
-    redirect_to bosses_workers_path
-  end
+  
 
   private
   def worker_params

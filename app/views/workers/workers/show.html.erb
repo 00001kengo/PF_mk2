@@ -8,8 +8,9 @@
   </tr>
 </table>
 
-<p>勤務時間</p>
-<% if WorkingTime.exists?(worker_id: @worker.id) %>
-<p><%= @working_time.start_at %>~<%= @working_time.finish_at %></p>
-
-<% end %>
+  <p>勤務時間</p>
+  <% if @working_time.present? %>
+    <p><%= @working_time.start_at %>~<%= @working_time.finish_at %></p>
+  <% elsif %>
+    <P>未定</P>
+  <% end %>

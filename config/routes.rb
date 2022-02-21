@@ -20,9 +20,14 @@ Rails.application.routes.draw do
   }
   namespace :workers do
     resources :workers, only: [:show] do
-      resources :working_times
+      resources :working_times, only: [:index] do
+        resources :requests, only: [:new, :create, :index, :show]
+      end
+      patch 'working_times/attendance' => 'working_times#attendance'
+      patch 'working_times/leaving' => 'working_times#leaving'
+    
     end
-    resources :requests, only: [:index, :show, :new, :create]
+    
 
   end
 

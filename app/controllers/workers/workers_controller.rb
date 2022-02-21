@@ -1,7 +1,7 @@
 class Workers::WorkersController < ApplicationController
 
 def show
-  
+
   @worker = Worker.find(params[:id])
     date = DateTime.now
     today = date.strftime("%Y-%m-%d").split('-')
