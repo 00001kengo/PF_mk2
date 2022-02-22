@@ -17,7 +17,8 @@ class Workers::RequestsController < ApplicationController
 
   #申請一覧ページ
   def index
-
+    @requests =current_worker. 
+    
   end
 
   #申請詳細ページ

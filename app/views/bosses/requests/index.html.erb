@@ -1,0 +1,18 @@
+<h2>残業受諾ページ</h2>
+
+<% @request.each do |request| %>
+<table>
+  <tr>
+    <td>日付</td>
+    <td>労働者</td>
+    <td>ステータス</td>
+    <td>　　　</td>
+  </tr>
+  <tr>
+    <td><%= l request.start_at</td>
+    <td><%= request.working_time.worker.full_name %></td>
+    <td><%= request.status %></td>
+  </tr>
+</table>
+
+<% end %>

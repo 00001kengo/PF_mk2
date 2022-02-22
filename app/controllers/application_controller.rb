@@ -10,7 +10,6 @@ class ApplicationController < ActionController::Base
     day_start = DateTime.new(today[0].to_i, today[1].to_i, today[2].to_i, 0,0,0)
     day_end = DateTime.new(today[0].to_i, today[1].to_i, today[2].to_i, 23,59,59)
     @workingtime = current_worker.working_times.find_by(start_at:day_start..day_end)
-    p '-------hogehogehoge'
 
   end
 
