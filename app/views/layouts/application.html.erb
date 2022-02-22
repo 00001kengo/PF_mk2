@@ -30,11 +30,14 @@
             <%= link_to "Ssystem", root_path, class: "logo" %>
             <ul class="flex">
               <p>ようこそ、<%= current_worker.full_name %>さん!</p>
-              <%# if @workingtime.open_at.present? %>
-              <!--  <li><%#= link_to "退勤", workers_worker_working_times_leaving_path %></li>-->
-              <!--<#% else %>-->
-              <!--  <li><%#= link_to "出勤", workers_worker_working_times_attendance_path %></li>-->
-              <!--<%# end %>-->
+              <%# binding.irb %>
+              <% if @workingtime.nil? %>
+                <li>今日は勤務ありません</li>
+              <% elsif @workingtime.open_at.present? %>
+                <li><%= link_to "退勤", workers_worker_working_times_leaving_path(current_worker.id) %></li>
+              <% else %>
+                <li><%= link_to "出勤", workers_worker_working_times_attendance_path(current_worker.id) %></li>
+              <% end %>
 
               <li><%= link_to "残業申請", workers_worker_working_times_path(current_worker.id) %></li>
               <li><%= link_to "log out", destroy_worker_session_path, method: :delete %></li>
