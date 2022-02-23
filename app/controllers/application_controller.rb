@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  before_action :timestamp
+  #before_action :timestamp
 
 
   # private
