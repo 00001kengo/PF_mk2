@@ -1,6 +1,6 @@
 <P>勤務時間変更</P>
 
-<%= form_with model:@working_time, url: workers_worker_working_time_path(@working_time.worker_id,@working_time.id), method: :PUT, local:true do |f| %>
+<%= form_with model:@working_time, url: bosses_worker_working_time_path(@working_time.worker_id,@working_time.id), method: :PUT, local:true do |f| %>
 
 <h4>開始時刻</h4>
 <%= f.datetime_select :start_at %>

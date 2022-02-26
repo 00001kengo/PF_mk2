@@ -1,5 +1,5 @@
 class Bosses::WorkingTimesController < ApplicationController
-  
+
   def new #上司のみ勤務時間の作成
     @working_time = WorkingTime.new
   end
@@ -10,7 +10,7 @@ class Bosses::WorkingTimesController < ApplicationController
     @working_time.save!
     redirect_to bosses_workers_path
   end
-  
+
   def edit #上司のみ編
     @working_time = WorkingTime.find_by(id: params[:id])
 
@@ -21,5 +21,11 @@ class Bosses::WorkingTimesController < ApplicationController
     working_time.update(working_time_params)
     redirect_to bosses_worker_path(working_time.worker_id)
   end
-  
+
+  private
+
+  def working_time_params
+    params.require(:working_time).permit(:start_at, :finish_at, :open_at, :end_at)
+  end
+
 end

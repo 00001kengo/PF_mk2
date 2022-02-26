@@ -7,9 +7,12 @@ Rails.application.routes.draw do
     sessions: 'boss/sessions'
   }
   namespace :bosses do
-    resources :workers, only: [:index, :show]
-    resources :requests, only: [:index, :show, :update]
-    #resources :working_time
+    resources :workers, only: [:index, :show] do
+      resources :working_times, only: [:new, :create, :edit, :update] do
+        resources :requests, only: [:edit, :update]
+      end
+    end
+    get 'requests/index' => 'requests#index'
   end
 
   # 労働者用
@@ -25,9 +28,9 @@ Rails.application.routes.draw do
       end
       patch 'working_times/attendance' => 'working_times#attendance'
       patch 'working_times/leaving' => 'working_times#leaving'
-    
+
     end
-    
+
 
   end
 

@@ -1,14 +1,12 @@
 <h2>勤務作成</h2>
 
-<%= form_with model: @working_time, url: workers_worker_working_times_path(params[:worker_id]), local: true do |f| %>
+<%= form_with model: @working_time, url: bosses_worker_working_times_path(params[:worker_id]), local: true do |f| %>
 
 <h4>開始時刻</h4>
-<%= f.datetime_select :start_at %>
+<%= f.datetime_select :start_at,{:end_year => 2030} %>
 
 <h4>終了時刻</h4>
-<%= f.datetime_select :finish_at %>
+<%= f.datetime_select :finish_at,{:end_year => 2030} %>
 
 <%= f.submit '新規作成' %>
 <% end %>
-
-<%= link_to "勤務一覧へ", workers_worker_working_times_path(params[:worker_id]) %>

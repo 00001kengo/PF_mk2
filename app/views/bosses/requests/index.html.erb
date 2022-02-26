@@ -1,6 +1,6 @@
 <h2>残業受諾ページ</h2>
 
-<% @request.each do |request| %>
+<% @requests.each do |request| %>
 <table>
   <tr>
     <td>日付</td>
@@ -9,9 +9,10 @@
     <td>　　　</td>
   </tr>
   <tr>
-    <td><%= l request.start_at</td>
+    <td><%= l request.start_at %></td>
     <td><%= request.working_time.worker.full_name %></td>
     <td><%= request.status %></td>
+    <td><%= link_to "詳細", edit_bosses_worker_working_time_request_path %></td>
   </tr>
 </table>
 
