@@ -3,18 +3,21 @@
 <% @working_times.each do |working_time| %>
 <table>
   <tr>
-    <td>規定開始時刻</td>
-    <td>規定終了時刻</td>
-    <td>実開始時刻</td>
-    <td>実終了時刻</td>
+    <td>規定時間</td>
     <td></td>
+  </tr>
+  <tr>
+    <td><%= l working_time.start_at, format: :short %></td>
+    <td><%= l working_time.finish_at, format: :short %></td>
   </tr>
 
   <tr>
-    <td><%= working_time.start_at %></td>
-    <td><%= working_time.finish_at %></td>
-    <td><%= working_time.open_at %></td>
-    <td><%= working_time.end_at %></td>
+    <td>実時間</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><%= l working_time.open_at, format: :short %></td>
+    <td><%= l working_time.end_at, format: :short %></td>
     <td><%= link_to "残業申請", new_workers_worker_working_time_request_path(working_time.worker_id, working_time.id) %></td>
   </tr>
 </table>

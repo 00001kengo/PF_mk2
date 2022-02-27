@@ -3,7 +3,7 @@ class Workers::RequestsController < ApplicationController
   #申請ページ
   def new
     @request = Request.new
-
+    
   end
 
   #申請機能

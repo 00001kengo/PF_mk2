@@ -1,17 +1,28 @@
 <h2>労働者　残業申請ページ</h2>
+<p>勤務時間</p>
+<% current_worker.working_times.each do |working_time| %>
+    <p>規定時間
+        <%= l working_time.start_at, format: :short %>
+        ~
+        <%= l working_time.finish_at, format: :short %>
+    </p>
+    <% if working_time.request.present? %>
+        <P>実労働時間
+            <%= l working_time.request.start_at, format: :short %>
+            ~
+            <%= l working_time.request.finish_at, format: :short %>
+        </P>
+    <% end %>
+<% end %>
 
 
 <%= form_with model: @request, url: workers_worker_working_time_requests_path, method: :post, local: true do |f| %>
 
-<h4>開始時刻</h4>
-<%= f.datetime_select :start_at %>
+<h4>開始時刻</h4><%= f.datetime_select :start_at %>
 
-<h4>終了時刻</h4>
-<%= f.datetime_select :finish_at %>
+<h4>終了時刻</h4><%= f.datetime_select :finish_at %>
 
-<h4>内容</h4>
-<%= f.text_field :job_description %>
-
+<h4>内容</h4><%= f.text_field :job_description %>
 
 <%= f.hidden_field :status, value: "created" %>
 

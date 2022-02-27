@@ -3,16 +3,18 @@
 <table>
   <tr>
     <td>氏名</td>
-    <td>ログイン時刻</td>
-    <td>ログアウト時刻</td>
+    <td>　</td>
+    <td>最終ログイン時刻</td>
+    <td>　</td>
     <td></td>
   </tr>
 
   <% @workers.each do |worker| %>
   <tr>
     <td><%= worker.full_name %></td>
-    <td><%= worker.current_sign_in_at.in_time_zone('Tokyo').strftime("%Y-%m-%d %H:%M:%S") %></td>
-    <td><%= worker.last_sign_in_at.in_time_zone('Tokyo').strftime("%Y-%m-%d %H:%M:%S") %></td>
+    <td>　</td>
+    <td><%= l worker.current_sign_in_at, format: :short %></td>
+    <td>　</td>
     <td><%= link_to "詳細", bosses_worker_path(worker.id) %></td>
   </tr>
   <% end %>

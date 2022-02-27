@@ -15,6 +15,7 @@ class Bosses::RequestsController < ApplicationController
       request.working_time.over_at = request.finish_at - request.start_at
       request.working_time.save!
     end
+    #byebug
     redirect_to bosses_requests_index_path
   end
 

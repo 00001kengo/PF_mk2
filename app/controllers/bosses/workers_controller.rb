@@ -12,10 +12,17 @@ class Bosses::WorkersController < ApplicationController
     day_end = DateTime.new(today[0].to_i, today[1].to_i, today[2].to_i, 23,59,59)
     #当日のデータから勤務データを引張る
     @working_time = @worker.working_times.find_by(start_at:day_start..day_end)
-  
+    #週刊勤務時間
+    @working_time_week = @worker.working_times.where(start_at:date.beginning_of_week..date.end_of_week)
+    # @week_time = 0
+    # @working_time_week.each do |week|
+    #   @week_time += week.over_at
+    # end
+    #月間勤務時間引っ張る
+    @working_time_month = @worker.working_times.where(start_at:date.beginning_of_month..date.end_of_month)
   end
 
-  
+
 
   private
   def worker_params

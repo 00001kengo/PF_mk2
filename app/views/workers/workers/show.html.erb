@@ -10,7 +10,7 @@
 
   <p>勤務時間</p>
   <% if @working_time.present? %>
-    <p><%= @working_time.start_at %>~<%= @working_time.finish_at %></p>
+    <p><%= l @working_time.start_at, format: :short %>  ~  <%= l @working_time.finish_at, format: :time %></p>
   <% elsif %>
     <P>未定</P>
   <% end %>
