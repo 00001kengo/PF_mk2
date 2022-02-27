@@ -15,14 +15,14 @@ class Bosses::WorkersController < ApplicationController
     #週刊勤務時間
     @working_time_week = @worker.working_times.where(start_at:date.beginning_of_week..date.end_of_week)
     if @working_time_week.present?
-      @week_time = (@working_time_week.sum(:over_at)) / 3600
+      @week_time = @working_time_week.sum(:over_at) / 3600
     else
       @week_time = 0
     end
     #月間勤務時間引っ張る
     @working_time_month = @worker.working_times.where(start_at:date.beginning_of_month..date.end_of_month)
     if @working_time_month.present?
-      @month_time = (@working_time_month.sum(:over_at)) / 3600
+      @month_time = @working_time_month.sum(:over_at) / 3600
     else
       @month_time = 0
     end
