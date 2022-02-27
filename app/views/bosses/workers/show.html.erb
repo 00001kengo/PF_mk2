@@ -28,12 +28,12 @@
 
 <p>今週残業時間</p>
 <% if @working_time_week.any? %>
-    <%= @working_time_week.sum(:over_at) / 3600 %>
+    <%= @week_time %>
 <% end %>
 <a>H</a>
 <p>今月残業時間</p>
 <% if @working_time_month.any? %>
-    <%= @working_time_month.sum(:over_at) / 3600 %>
+    <%= @month_time %>
 <% end %>
 <a>H</a>
 
