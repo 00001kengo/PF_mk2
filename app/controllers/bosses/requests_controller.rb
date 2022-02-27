@@ -10,8 +10,7 @@ class Bosses::RequestsController < ApplicationController
 
   def update
     request = Request.find(params[:id])
-    request.update(request_params)
-    if request.confirmed?
+    if request.update(request_params) && request.confirmed?
       request.working_time.over_at = request.finish_at - request.start_at
       request.working_time.save!
     end
