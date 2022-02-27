@@ -1,24 +1,31 @@
-<p>詳細ページ</p>
+<h2>詳細ページ</h2>
 
-<p>name</p>
-<p><%= @worker.full_name %></p>
+<table>
+    <tr>
+        <td>name</td>
+        <td><%= @worker.full_name %></td>
+    </tr>
+</table>
 
 <p>勤務時間</p>
 <% @worker.working_times.each do |working_time| %>
     <p>
-        <%= working_time.start_at.strftime("%Y-%m-%d %H:%M:%S") %>
+        <%= l working_time.start_at, format: :short %>
         ~
-        <%= working_time.finish_at.strftime("%Y-%m-%d %H:%M:%S") %>
+        <%= l working_time.finish_at, format: :short %>
     </p>
-    <% if working_time.open_at.present? %>
-    <P>
-        <%= working_time.open_at.strftime("%Y-%m-%d %H:%M:%S") %>
-        ~
-        <%= working_time.end_at.strftime("%Y-%m-%d %H:%M:%S") %>
-    </P>
+    <% if working_time.request.present? %>
+        <P>
+            <%= l working_time.request.start_at, format: :short %>
+            ~
+            <%= l working_time.request.finish_at, format: :short %>
+        </P>
     <% end %>
     <P><%= link_to "編集", edit_bosses_worker_working_time_path(@worker.id,working_time.id) %></P>
 <% end %>
 
-
 <%= link_to "新規追加", new_bosses_worker_working_time_path(@worker) %>
+
+
+
+

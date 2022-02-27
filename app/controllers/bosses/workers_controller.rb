@@ -12,7 +12,7 @@ class Bosses::WorkersController < ApplicationController
     day_end = DateTime.new(today[0].to_i, today[1].to_i, today[2].to_i, 23,59,59)
     #当日のデータから勤務データを引張る
     @working_time = @worker.working_times.find_by(start_at:day_start..day_end)
-
+  
   end
 
   
