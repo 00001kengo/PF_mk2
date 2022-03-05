@@ -1,9 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :timestamp
 
-
-  # private
-
   def timestamp
     if worker_signed_in?
       date = DateTime.now
@@ -15,7 +12,5 @@ class ApplicationController < ActionController::Base
 
   end
 
-  #view
-  #<link_to 'shukkin' ~_path(@wrokingtime.id)>
 
 end

@@ -9,45 +9,46 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-
-
   <body>
     <% unless current_page?(root_path) %>
-      <% if boss_signed_in? %>
-        <header class="boss_header">
-          <div class="header-content">
-            <%= link_to "Ssystem", root_path, class: "logo" %>
-            <ul class="flex">
-              <li><%= link_to "労働者一覧", bosses_workers_path %></li>
-              <li><%= link_to "受諾一覧", bosses_requests_index_path %></li>
-              <li><%= link_to "log out", destroy_boss_session_path, method: :delete %></li>
-            </ul>
+      <nav class="navbar navbar-expand-lg navbar-light ">
+        <div class="container">
+          <% if boss_signed_in? or worker_signed_in? %>
+            <div class="col-2">
+              <%= link_to "Ssystem", root_path, class: "logo" %>
+            </div>
+          <% end %>
+          <div class="col-10">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <% if boss_signed_in? %>
+              <ul class="navbar-nav ml-auto">
+                <li><%= link_to "労働者一覧", bosses_workers_path,class: "btn btn-outline-secondary nav-link mx-2 text-dark" %></li>
+                <li><%= link_to "受諾一覧", bosses_requests_index_path,class: "btn btn-outline-secondary nav-link mx-2 text-dark" %></li>
+                <li><%= link_to "log out", destroy_boss_session_path, method: :delete,class: "btn btn-outline-secondary nav-link mx-2 text-dark" %></li>
+              </ul>
+            <% elsif worker_signed_in? %>
+              <ul class="navbar-nav ml-auto">
+                <p>ようこそ、<%= current_worker.full_name %>さん!</p>
+                <% if @workingtime.nil? %>
+                  <li>今日は勤務ありません</li>
+                  <% elsif @workingtime.end_at.present? %>
+                    <li>お疲れ様でした</li>
+                  <% elsif @workingtime.open_at.present? %>
+                    <li><%= link_to "退勤", workers_worker_working_times_leaving_path(current_worker.id), method: :patch,class: "btn btn-outline-secondary nav-link mx-2 text-dark" %></li>
+                  <% else %>
+                    <li><%= link_to "出勤", workers_worker_working_times_attendance_path(current_worker.id), method: :patch,class: "btn btn-outline-secondary nav-link mx-2 text-dark" %></li>
+                <% end %>
+                <li><%= link_to "マイページ", workers_worker_path(current_worker.id),class: "btn btn-outline-secondary nav-link mx-2 text-dark" %></li>
+                <li><%= link_to "残業申請", workers_worker_working_times_path(current_worker.id),class: "btn btn-outline-secondary nav-link mx-2 text-dark" %></li>
+                <li><%= link_to "log out", destroy_worker_session_path, method: :delete,class: "btn btn-outline-secondary nav-link mx-2 text-dark" %></li>
+              </ul>
+            <% end %>
           </div>
-        </header>
-      <% elsif worker_signed_in? %>
-        <header class="worker_header">
-          <div class="header-content">
-            <%= link_to "Ssystem", root_path, class: "logo" %>
-            <ul class="flex">
-              <p>ようこそ、<%= current_worker.full_name %>さん!</p>
-              <%# binding.irb %>
-              <% if @workingtime.nil? %>
-                <li>今日は勤務ありません</li>
-              <% elsif @workingtime.end_at.present? %>
-                <li>お疲れ様でした</li>
-              <% elsif @workingtime.open_at.present? %>
-                <li><%= link_to "退勤", workers_worker_working_times_leaving_path(current_worker.id), method: :patch %></li>
-              <% else %>
-                <li><%= link_to "出勤", workers_worker_working_times_attendance_path(current_worker.id), method: :patch %></li>
-              <% end %>
-              <li><%= link_to "マイページ", workers_worker_path(current_worker.id) %></li>
-              <li><%= link_to "残業申請", workers_worker_working_times_path(current_worker.id) %></li>
-              <li><%= link_to "log out", destroy_worker_session_path, method: :delete %></li>
-            </ul>
-          </div>
-        </header>
-      <% end %>
+        </div>
+      </nav>
     <% end %>
-    <%= yield %>
+  <%= yield %>
   </body>
 </html>

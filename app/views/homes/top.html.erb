@@ -1,29 +1,36 @@
-<h1>勤怠管理システム：：Ssystem</h1>
 
-<div class =
-<p>絶対サビ残させません！！</p>
 
-<table>
-  <tr>
-    <td></td>
-    <td><%= link_to "労働者ログイン", new_worker_session_path %></td>
-  </tr>
-  <tr>
-    <td><p>初めての方はこちら</p></td>
-    <td><%= link_to "労働者登録", new_worker_registration_path %></td>
-  </tr>
-</table>
+<div class ="container">
+  <div class ="row">
+    <h1>勤怠管理システム：：Ssystem</h1>
+    <h3>このシステムの目標は絶対サビ残をさせない事です！</h3>
+  </div>
+</div>
 
-<table>
-  <tr>
-    <td><p>上司の方はこちら</p></td>
-    <td><%= link_to "管理者ログイン", new_boss_session_path %></td>
-  </tr>
-</table>
+<div class ="container">
+  <div class ="row font-weight-bold">
 
-<table>
-  <tr>
-    <td><p></p></td>
-    <td><%= link_to "logout", destroy_worker_session_path, method: :delete %></td>
-  </tr>
-</table>
+    <div class ="col-lg-6">
+      <table class="box1">
+        <tr>
+          <td>労働者の方はこちら</td>
+          <td><%= link_to "労働者ログイン", new_worker_session_path, class: "btn btn-primary nav-link mx-2 text-dark" %></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td ><%= link_to "労働者登録", new_worker_registration_path, class: "btn btn-primary nav-link mx-2 text-dark" %></td>
+        </tr>
+      </table>
+    </div>
+
+    <div class ="col-lg-6">
+      <table class="box2">
+        <tr>
+          <td>　上司の方はこちら</td>
+          <td><%= link_to "管理者ログイン", new_boss_session_path, class: "btn btn-success nav-link mx-2 text-dark" %></td>
+        </tr>
+      </table>
+    </div>
+
+  </div>
+</div>
