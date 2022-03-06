@@ -1,19 +1,34 @@
-<h2>労働者　残業申請ページ</h2>
-<p>勤務時間</p>
-<% current_worker.working_times.each do |working_time| %>
-    <p>規定時間
-        <%= l working_time.start_at, format: :short %>
-        ~
-        <%= l working_time.finish_at, format: :short %>
-    </p>
-    <% if working_time.request.present? %>
-        <P>実労働時間
-            <%= l working_time.request.start_at, format: :short %>
-            ~
-            <%= l working_time.request.finish_at, format: :short %>
-        </P>
-    <% end %>
-<% end %>
+<div class="container">
+  <div class="row">
+    <h3 class="p-3"><span class="header">労働者　残業申請ページ</span></h3>
+  </div>
+
+    <table>
+         <tr>
+          <td>勤務時間</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+
+
+        <% current_worker.working_times.each do |working_time| %>
+            <tr>
+                <td>規定時間</td>
+                <td><%= l working_time.start_at, format: :short %></td>
+                <td>~</td>
+                <td><%= l working_time.finish_at, format: :short %></td>
+            </tr>
+                <% if working_time.request.present? %>
+                    <tr>
+                        <td>実労働時間</td>
+                        <td><%= l working_time.open_at, format: :short %></td>
+                        <td>~</td>
+                        <td><%= l working_time.end_at, format: :short %></td>
+                    </tr>
+                <% end %>
+        <% end %>
+    </table>
 
 
 <%= form_with model: @request, url: workers_worker_working_time_requests_path, method: :post, local: true do |f| %>
@@ -28,3 +43,4 @@
 
 <%= f.submit '申請' %>
 <% end %>
+</div>

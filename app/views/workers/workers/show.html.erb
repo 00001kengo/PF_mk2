@@ -1,16 +1,30 @@
-<p>業務時間</p>
+<div class="container">
+  <div class="row">
+    <h3 class="p-3"><span class="header">業務時間</span></h3>
+  </div>
 
-<table>
-  <tr>
-    <td>name</td>
-    <td><%= @worker.first_name %></td>
-    <td><%= @worker.last_name %></td>
-  </tr>
-</table>
-
-  <p>勤務時間</p>
-  <% if @working_time.present? %>
-    <p><%= l @working_time.start_at, format: :short %>  ~  <%= l @working_time.finish_at, format: :time %></p>
-  <% elsif %>
-    <P>未定</P>
-  <% end %>
+  <div class="row">
+    <div class="col-md-12">
+      <table>
+        <tr>
+          <td>本日の勤務</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <% if @working_time.present? %>
+          <td></td>
+          <td><%= l @working_time.start_at, format: :short %></td>
+          <td>  ~  </td>
+          <td><%= l @working_time.finish_at, format: :time %></td>
+          <% elsif %>
+          <td></td>
+          <td>未定</td>
+          <td></td>
+          <td></td>
+          <% end %>
+        </tr>
+      </table>
+    </div>
+  </div>

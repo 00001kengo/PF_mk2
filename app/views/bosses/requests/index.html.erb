@@ -1,20 +1,22 @@
-<h2>残業受諾ページ</h2>
+<div class="container">
+  <div class="row">
+    <h3 class="p-3"><span class="header">残業受諾ページ</span></h3>
+  </div>
 
-
-<table>
-  <tr>
-    <td>勤務日</td>
-    <td>労働者</td>
-    <td>ステータス</td>
-    <td>　　　</td>
-  </tr>
-  <% @requests.each do |request| %>
-  <tr>
-    <td><%= l request.start_at, format: :day %></td>
-    <td><%= request.working_time.worker.full_name %></td>
-    <td><%= request.status_i18n %></td>
-    <td><%= link_to "詳細", edit_bosses_worker_working_time_request_path(request.working_time.worker_id, request.working_time_id, request.id) %></td>
-  </tr>
-  <% end %>
-</table>
-
+  <table>
+    <tr>
+      <td>勤務日</td>
+      <td>労働者</td>
+      <td>ステータス</td>
+      <td>　　　</td>
+    </tr>
+    <% @requests.each do |request| %>
+    <tr>
+      <td><%= l request.start_at, format: :day %></td>
+      <td><%= request.working_time.worker.full_name %></td>
+      <td><%= request.status_i18n %></td>
+      <td><%= link_to "詳細", edit_bosses_worker_working_time_request_path(request.working_time.worker_id, request.working_time_id, request.id) %></td>
+    </tr>
+    <% end %>
+  </table>
+</div>

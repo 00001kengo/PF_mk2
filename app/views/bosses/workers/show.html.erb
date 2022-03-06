@@ -1,35 +1,54 @@
-<h2>詳細ページ</h2>
 
-<table>
-    <tr>
-        <td>name</td>
-        <td><%= @worker.full_name %></td>
-    </tr>
-</table>
+<div class="container">
+  <div class="row">
+    <h3 class="p-3"><span class="header">詳細ページ</span></h3>
+  </div>
 
-<p>勤務時間</p>
-<% @worker.working_times.each do |working_time| %>
-    <p>規定時間
-        <%= l working_time.start_at, format: :short %>
-        ~
-        <%= l working_time.finish_at, format: :short %>
-    </p>
-    <% if working_time.request.present? %>
-        <P>実労働時間
-            <%= l working_time.request.start_at, format: :short %>
-            ~
-            <%= l working_time.request.finish_at, format: :short %>
-        </P>
-    <% end %>
-    <P><%= link_to "編集", edit_bosses_worker_working_time_path(@worker.id,working_time.id) %></P>
-<% end %>
+    <div class="row">
+        <div class="col-12">
 
-<%= link_to "新規追加", new_bosses_worker_working_time_path(@worker) %>
+            <table>
+                <thead class="worker_table">
+                    <tr>
+                        <td>名前：　<%= @worker.full_name %>さん</td>
+                        <tr>勤務時間</tr>
+                        <tr></tr>
+                        <tr></tr>
+                        <tr></tr>
+                    </tr>
+                </thead>
 
-<p>今週残業時間</p>
-    <%= @week_time %>
-<a>H</a>
-<p>今月残業時間</p>
-    <%= @month_time %>
-<a>H</a>
+                <tbody>
+                    <% @worker.working_times.each do |working_time| %>
+                    <tr>
+                        <td>規定時間</td>
+                        <td><%= l working_time.start_at, format: :short %></td>
+                        <td> ~ </td>
+                        <td><%= l working_time.finish_at, format: :short %></td>
+                        <td><%= link_to "編集", edit_bosses_worker_working_time_path(@worker.id,working_time.id),class: "btn btn-outline-secondary text-dark" %></td>
+                    </tr>
 
+                    <tr>
+                        <% if working_time.request.present? %>
+                            <td>実労働時間</td>
+                            <td><%= l working_time.request.start_at, format: :short %></td>
+                            <td> ~ </td>
+                            <td><%= l working_time.request.finish_at, format: :short %></td>
+                            <td></td>
+                        <% end %>
+                    </tr>
+                    <% end %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+<%= link_to "新規追加", new_bosses_worker_working_time_path(@worker),class: "btn btn-outline-secondary nav-link mx-2 text-dark" %>
+
+    <p>今週残業時間</p>
+        <%= @week_time %>
+    <a>H</a>
+    <p>今月残業時間</p>
+        <%= @month_time %>
+    <a>H</a>
+</div>

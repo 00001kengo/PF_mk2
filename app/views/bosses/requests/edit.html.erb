@@ -1,33 +1,48 @@
-<h2>受諾ページ</h2>
-
-<table>
-  <tr>
-    <td>勤務日</td>
-    <td><%= l @request.working_time.start_at, format: :day %></td>
-  </tr>
-
-  <tr>
-    <td>勤務時間</td>
-    <td><%= l @request.start_at, format: :short %></td>
-    <td> ~ </td>
-    <td><%= l @request.finish_at, format: :short %></td>
-  </tr>
-
-  <tr>
-    <td>名前</td>
-    <td><%= @request.working_time.worker.full_name %></td>
-  </tr>
-</table>
+<div class="container">
+  <div class="row">
+    <h3 class="p-3"><span class="header">受諾ページ</span></h3>
+  </div>
 
 
-<%= form_with  model:@request, url: bosses_worker_working_time_request_path(@request.working_time.worker_id, @request.working_time_id, @request.id), method: :PATCH, local:true do |f| %>
   <table>
     <tr>
-      <td>承認or非承認</td>
-      <td>
-        <%= f.select :status, Request.statuses.keys.map {|k| [I18n.t("enums.request.status.#{k}"), k]} %>
-        <%= f.submit "更新" %>
-      </td>
+      <td>勤務日</td>
+      <td><%= l @request.working_time.start_at, format: :day %></td>
+    </tr>
+
+    <tr>
+      <td>勤務時間</td>
+      <td><%= l @request.start_at, format: :short %></td>
+      <td> ~ </td>
+      <td><%= l @request.finish_at, format: :short %></td>
+    </tr>
+
+    <tr>
+      <td>名前</td>
+      <td><%= @request.working_time.worker.full_name %></td>
+    </tr>
+
+    <tr>
+      <td>勤務内容</td>
+      <td><%= @request.job_description %></td>
+    </tr>
+
+    <tr>
+      <td>感情分析値</td>
+      <td><%= @request.score %></td>
     </tr>
   </table>
-<% end %>
+
+
+  <%= form_with  model:@request, url: bosses_worker_working_time_request_path(@request.working_time.worker_id, @request.working_time_id, @request.id), method: :PATCH, local:true do |f| %>
+    <table>
+      <tr>
+        <td>承認or非承認</td>
+        <td>
+          <%= f.select :status, Request.statuses.keys.map {|k| [I18n.t("enums.request.status.#{k}"), k]} %>
+          <%= f.submit "更新" %>
+        </td>
+      </tr>
+    </table>
+  <% end %>
+</div>

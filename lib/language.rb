@@ -1,11 +1,8 @@
-class Request < ApplicationRecord
-  require 'base64'
-  require 'json'
-  require 'net/https'
-  enum status: { created: 0, confirm_requested: 10, confirmed: 20 }
+require 'base64'
+require 'json'
+require 'net/https'
 
-  belongs_to :working_time
-
+module Language
   class << self
     def get_data(text)
       # APIのURL作成
@@ -30,7 +27,7 @@ class Request < ApplicationRecord
         raise error['message']
       else
         response_body['documentSentiment']['score']
-      end
+      end  
     end
   end
 end

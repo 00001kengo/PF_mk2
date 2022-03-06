@@ -1,12 +1,17 @@
-<P>勤務時間変更</P>
+<div class="container">
+  <div class="row">
+    <h3 class="p-3"><span class="header">勤務時間変更</span></h3>
+  </div>
 
-<%= form_with model:@working_time, url: bosses_worker_working_time_path(@working_time.worker_id,@working_time.id), method: :PUT, local:true do |f| %>
 
-<h4>開始時刻</h4>
-<%= f.datetime_select :start_at,{:end_year => 2030} %>
+  <%= form_with model:@working_time, url: bosses_worker_working_time_path(@working_time.worker_id,@working_time.id), method: :PUT, local:true do |f| %>
 
-<h4>終了時刻</h4>
-<%= f.datetime_select :finish_at,{:end_year => 2030} %>
+  <h4>開始時刻</h4>
+  <%= f.datetime_select :start_at,{:end_year => 2030} %>
 
-<%= f.submit '変更' %>
-<% end %>
+  <h4>終了時刻</h4>
+  <%= f.datetime_select :finish_at,{:end_year => 2030} %>
+
+  <%= f.submit '変更' %>
+  <% end %>
+</div>

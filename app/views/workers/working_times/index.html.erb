@@ -1,26 +1,24 @@
-<h2>過去の勤務</h2>
-
-<% @working_times.each do |working_time| %>
-<table>
-  <tr>
-    <td>規定時間</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td><%= l working_time.start_at, format: :short %></td>
-    <td><%= l working_time.finish_at, format: :short %></td>
-  </tr>
-
-  <tr>
-    <td>実時間</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td><%= l working_time.open_at, format: :short %></td>
-    <td><%= l working_time.end_at, format: :short %></td>
-    <td><%= link_to "残業申請", new_workers_worker_working_time_request_path(working_time.worker_id, working_time.id) %></td>
-  </tr>
-</table>
+<div class="container">
+  <div class="row">
+    <h3 class="p-3"><span class="header">過去の勤務</span></h3>
+  </div>
 
 
-<% end %>
+  <% @working_times.each do |working_time| %>
+  <table>
+    <tr>
+      <td>規定時間</td>
+      <td><%= l working_time.start_at, format: :short %></td>
+      <td><%= l working_time.finish_at, format: :short %></td>
+      <td></td>
+    </tr>
+  
+    <tr>
+      <td>実時間</td>
+      <td><%= l working_time.open_at, format: :short %></td>
+      <td><%= l working_time.end_at, format: :short %></td>
+      <td><%= link_to "残業申請", new_workers_worker_working_time_request_path(working_time.worker_id, working_time.id) %></td>
+    </tr>
+  </table>
+  <% end %>
+</div>
