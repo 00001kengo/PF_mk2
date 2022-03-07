@@ -12,22 +12,21 @@
         </tr>
 
 
-        <% current_worker.working_times.each do |working_time| %>
+        <tr>
+          <td>規定時間</td>
+          <td><%= l @working_time.start_at, format: :short %></td>
+          <td>~</td>
+          <td><%= l @working_time.finish_at, format: :short %></td>
+        </tr>
+
+          <% if @working_time.request.present? %>
             <tr>
-                <td>規定時間</td>
-                <td><%= l working_time.start_at, format: :short %></td>
-                <td>~</td>
-                <td><%= l working_time.finish_at, format: :short %></td>
+              <td>実労働時間</td>
+              <td><%= l @working_time.open_at, format: :short %></td>
+              <td>~</td>
+              <td><%= l @working_time.end_at, format: :short %></td>
             </tr>
-                <% if working_time.request.present? %>
-                    <tr>
-                        <td>実労働時間</td>
-                        <td><%= l working_time.open_at, format: :short %></td>
-                        <td>~</td>
-                        <td><%= l working_time.end_at, format: :short %></td>
-                    </tr>
-                <% end %>
-        <% end %>
+          <% end %>
     </table>
 
 

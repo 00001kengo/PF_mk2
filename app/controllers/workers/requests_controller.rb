@@ -3,6 +3,7 @@ class Workers::RequestsController < ApplicationController
 
   #申請ページ
   def new
+    @working_time = WorkingTime.find(params[:working_time_id])
     @request = Request.new
 
   end
